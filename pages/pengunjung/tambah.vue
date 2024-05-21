@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-lg-12">
           <h2 class="text-center my-4">ISI BUKU KUNJUNGAN</h2>
-          <form @submit.prevent="kirimData">
+          <form @submit.prevent="KirimData">
             <div class="mb-3">
               <input v-model="form.nama" type="text" class="form-control form-control-lg rounded-5" placeholder="Nama...">
             </div>
@@ -72,7 +72,8 @@ const form = ref({
     keperluan:"",
 })
 const KirimData = async() => {
-    const { error } = await supabase.from('pengunjung').insert([from.value])
+   
+    const { error } = await supabase.from('pengunjung').insert([form.value])
     if(error) throw error
     else navigateTo('/pengunjung')
 }
